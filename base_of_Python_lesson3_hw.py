@@ -14,9 +14,6 @@ def is_it_number(*args):
             except ValueError:
                 i = input(f"Вместо {i} нужно целое или вещественное число.\n")
                 continue
-            except TypeError:
-                i = input(f"Вместо {i} нужно целое или вещественное число.\n")
-                continue
             break
     return args_list
 
