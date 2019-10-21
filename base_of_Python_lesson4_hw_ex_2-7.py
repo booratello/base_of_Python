@@ -2,6 +2,7 @@ from functools import reduce
 from itertools import count
 from itertools import cycle
 from math import factorial
+from random import randrange
 
 
 def task2():
@@ -11,7 +12,7 @@ def task2():
 
     :return: None
     """
-    start_list = [25, 16, 52, 86, 105, 12, 26, 130, 512, 248, 3, 75, 57]
+    start_list = [randrange(101) for _ in range(25)]
     print(f"Предоставлен следующий список:\n{start_list}")
     sorted_list = [start_list[i] for i in range(1, len(start_list)) if start_list[i - 1] < start_list[i]]
     print(f"Элементы списка, значения которых больше предыдущего элемента:\n{sorted_list}\n")
@@ -36,7 +37,7 @@ def task4():
 
     :return: None
     """
-    start_list = [25, 16, 25, 52, 86, 105, 12, 26, 52, 130, 12, 512, 248, 248, 3, 3, 3, 75, 57]
+    start_list = [randrange(51) for _ in range(25)]
     print(f"Предоставлен следующий список:\n{start_list}")
     sorted_list = [el for el in start_list if start_list.count(el) == 1]
     print(f"Неповторяющиеся элементы списка в порядке, соответствующему их порядку в исходном списке:\n{sorted_list}\n")
@@ -60,8 +61,11 @@ def task5():
     функции. Это список, заполняемый генератором из диапазона от 100 до 1000 включительно с шагом 2, т.е. для данного
     случая - чётными элементами из указаного диапазона занчений.
     """
-    print(f"Получено следующее страшное число:\n"
-          f"{reduce(lambda prev_el, el: prev_el * el, [el for el in range(100, 1001, 2)])}\n")
+    rand_list = [randrange(100, 1001, 2) for _ in range(randrange(5, 21))]
+    print(f"Создадим спиок произвольной длины (от 5 до 20 элементов), каждый элемент которого является случайным\n"
+          f"чётным числом в диапазоне от 100 до 1000:\n{rand_list}\n")
+    print(f"В результате произведения всех элементов списка получено следующее число:\n"
+          f"{reduce(lambda prev_el, el: prev_el * el, rand_list)}\n")
 
 
 def task6():
@@ -134,7 +138,8 @@ def task6():
                     print(el)
 
     else:
-        start_list = [25, 16, 52, 86, 105, 12, 26, 130, 512, 248, 3, 75, 57]
+        start_list = [randrange(101) for _ in range(5)]
+        print(f"Имеется следующий список:\n{start_list}\n")
         while True:
             stop_number = is_it_number(input("Сколько сделать повторений элементов списка?\n"))
             if stop_number <= 0:
